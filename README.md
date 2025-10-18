@@ -2,6 +2,13 @@
 
 This is a sample Input Method Editor (IME) for Windows using the Text Services Framework (TSF).
 
+## Differences from Original
+
+This project is a modified version of the IME sample from [Microsoft Windows Classic Samples](https://github.com/microsoft/Windows-classic-samples/tree/main/Samples/IME). The main differences are:
+
+- **Directory Structure**: Reorganized directories including `include`, `src`, and `resource` for better organization.
+- **Build System**: Changed from MSBuild to CMake for improved build configuration.
+
 ## Building
 
 ### Prerequisites

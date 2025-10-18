@@ -7,101 +7,101 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Source files
 set(SOURCES
-    ActiveLanguageProfileNotifySink.cpp
-    BaseDictionaryEngine.cpp
-    BaseWindow.cpp
-    ButtonWindow.cpp
-    CandidateListUIPresenter.cpp
-    CandidateWindow.cpp
-    Compartment.cpp
-    Composition.cpp
-    CompositionProcessorEngine.cpp
-    DictionaryParser.cpp
-    DictionarySearch.cpp
-    DisplayAttribute.cpp
-    DisplayAttributeInfo.cpp
-    DisplayAttributeProvider.cpp
-    DllMain.cpp
-    EditSession.cpp
-    EndComposition.cpp
-    EnumDisplayAttributeInfo.cpp
-    EnumTfCandidates.cpp
-    File.cpp
-    FileMapping.cpp
-    FunctionProviderSink.cpp
-    GetTextExtentEditSession.cpp
-    Globals.cpp
-    KeyEventSink.cpp
-    KeyHandler.cpp
-    KeyHandlerEditSession.cpp
-    KeyStateCategory.cpp
-    LanguageBar.cpp
-    Register.cpp
-    RegKey.cpp
-    SampleIME.cpp
-    SampleIMEBaseStructure.cpp
-    ScrollBarWindow.cpp
-    SearchCandidateProvider.cpp
-    Server.cpp
-    ShadowWindow.cpp
-    StartComposition.cpp
-    TableDictionaryEngine.cpp
-    TextEditSink.cpp
-    TfInputProcessorProfile.cpp
-    TfTextLayoutSink.cpp
-    ThreadFocusSink.cpp
-    ThreadMgrEventSink.cpp
-    TipCandidateList.cpp
-    TipCandidateString.cpp
-    SampleIME.rc
+    src/ActiveLanguageProfileNotifySink.cpp
+    src/BaseDictionaryEngine.cpp
+    src/BaseWindow.cpp
+    src/ButtonWindow.cpp
+    src/CandidateListUIPresenter.cpp
+    src/CandidateWindow.cpp
+    src/Compartment.cpp
+    src/Composition.cpp
+    src/CompositionProcessorEngine.cpp
+    src/DictionaryParser.cpp
+    src/DictionarySearch.cpp
+    src/DisplayAttribute.cpp
+    src/DisplayAttributeInfo.cpp
+    src/DisplayAttributeProvider.cpp
+    src/DllMain.cpp
+    src/EditSession.cpp
+    src/EndComposition.cpp
+    src/EnumDisplayAttributeInfo.cpp
+    src/EnumTfCandidates.cpp
+    src/File.cpp
+    src/FileMapping.cpp
+    src/FunctionProviderSink.cpp
+    src/GetTextExtentEditSession.cpp
+    src/Globals.cpp
+    src/KeyEventSink.cpp
+    src/KeyHandler.cpp
+    src/KeyHandlerEditSession.cpp
+    src/KeyStateCategory.cpp
+    src/LanguageBar.cpp
+    src/Register.cpp
+    src/RegKey.cpp
+    src/SampleIME.cpp
+    src/SampleIMEBaseStructure.cpp
+    src/ScrollBarWindow.cpp
+    src/SearchCandidateProvider.cpp
+    src/Server.cpp
+    src/ShadowWindow.cpp
+    src/StartComposition.cpp
+    src/TableDictionaryEngine.cpp
+    src/TextEditSink.cpp
+    src/TfInputProcessorProfile.cpp
+    src/TfTextLayoutSink.cpp
+    src/ThreadFocusSink.cpp
+    src/ThreadMgrEventSink.cpp
+    src/TipCandidateList.cpp
+    src/TipCandidateString.cpp
+    resource/SampleIME.rc
 )
 
 # Header files (for IDE support)
 set(HEADERS
-    BaseDictionaryEngine.h
-    BaseWindow.h
-    ButtonWindow.h
-    CandidateListUIPresenter.h
-    CandidateWindow.h
-    Compartment.h
-    CompositionProcessorEngine.h
-    define.h
-    DictionaryParser.h
-    DictionarySearch.h
-    DisplayAttributeInfo.h
-    DisplayString.h
-    EditSession.h
-    EnumDisplayAttributeInfo.h
-    EnumTfCandidates.h
-    File.h
-    FileMapping.h
-    GetTextExtentEditSession.h
-    Globals.h
-    KeyHandlerEditSession.h
-    KeyStateCategory.h
-    LanguageBar.h
-    Private.h
-    RegKey.h
-    resource.h
-    SampleIME.h
-    SampleIMEBaseStructure.h
-    SampleIMEStructureArray.h
-    ScrollBarWindow.h
-    SearchCandidateProvider.h
-    ShadowWindow.h
-    stdafx.h
-    TableDictionaryEngine.h
-    TfInputProcessorProfile.h
-    TfTextLayoutSink.h
-    TipCandidateList.h
-    TipCandidateString.h
+    include/BaseDictionaryEngine.h
+    include/BaseWindow.h
+    include/ButtonWindow.h
+    include/CandidateListUIPresenter.h
+    include/CandidateWindow.h
+    include/Compartment.h
+    include/CompositionProcessorEngine.h
+    include/Define.h
+    include/DictionaryParser.h
+    include/DictionarySearch.h
+    include/DisplayAttributeInfo.h
+    include/DisplayString.h
+    include/EditSession.h
+    include/EnumDisplayAttributeInfo.h
+    include/EnumTfCandidates.h
+    include/File.h
+    include/FileMapping.h
+    include/GetTextExtentEditSession.h
+    include/Globals.h
+    include/KeyHandlerEditSession.h
+    include/KeyStateCategory.h
+    include/LanguageBar.h
+    include/Private.h
+    include/RegKey.h
+    include/resource.h
+    include/SampleIME.h
+    include/SampleIMEBaseStructure.h
+    include/SampleIMEStructureArray.h
+    include/ScrollBarWindow.h
+    include/SearchCandidateProvider.h
+    include/ShadowWindow.h
+    include/stdafx.h
+    include/TableDictionaryEngine.h
+    include/TfInputProcessorProfile.h
+    include/TfTextLayoutSink.h
+    include/TipCandidateList.h
+    include/TipCandidateString.h
 )
 
 # Create shared library (DLL)
-add_library(SampleIME SHARED ${SOURCES} ${HEADERS} SampleIME.def)
+add_library(SampleIME SHARED ${SOURCES} ${HEADERS} resource/SampleIME.def)
 
 # Include directories
-target_include_directories(SampleIME PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(SampleIME PRIVATE include)
 
 # Preprocessor definitions
 target_compile_definitions(SampleIME PRIVATE
@@ -117,6 +117,6 @@ endif()
 # Copy dictionary file to output directory
 add_custom_command(TARGET SampleIME POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
-    ${CMAKE_CURRENT_SOURCE_DIR}/Dictionary/SampleIMESimplifiedQuanPin.txt
+    ${CMAKE_CURRENT_SOURCE_DIR}/resource/Dictionary/SampleIMESimplifiedQuanPin.txt
     $<TARGET_FILE_DIR:SampleIME>/SampleIMESimplifiedQuanPin.txt
 )
